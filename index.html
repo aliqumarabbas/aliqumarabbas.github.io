@@ -43,6 +43,16 @@
             50% { text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff; }
         }
 
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         body {
             font-family: 'Courier New', monospace;
             background: #000;
@@ -183,7 +193,6 @@
             border-radius: 15px;
             padding: 0;
             margin: 40px auto;
-            max-width: 900px;
             box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
             animation: fadeInUp 1.2s ease;
             overflow: hidden;
@@ -288,19 +297,6 @@
             font-size: 1em;
             outline: none;
             padding: 5px;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: #00ff00;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
         }
 
         /* Section Styles */
@@ -436,7 +432,7 @@
             font-weight: bold;
         }
 
-        .experience-item[data-state="expanded"] .expand-icon {
+        .experience-item.active .expand-icon {
             transform: rotate(180deg);
         }
 
@@ -483,7 +479,7 @@
             font-weight: bold;
         }
 
-        .company-item[data-state="expanded"] .expand-icon-company {
+        .company-item.active .expand-icon-company {
             transform: rotate(90deg);
         }
 
@@ -495,6 +491,33 @@
 
         .company-details-inner {
             padding: 0 20px 20px 20px;
+        }
+
+        .job-description {
+            color: #00ff00;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        li {
+            color: #00f2ff;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #ff00ff;
+            font-weight: bold;
         }
 
         /* Contact Section - Modern Trendy Design */
@@ -554,11 +577,6 @@
         .contact-card-modern:hover .card-glow {
             opacity: 1;
             animation: rotateGlow 3s linear infinite;
-        }
-
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .card-shine {
@@ -652,33 +670,6 @@
             color: #ff00ff;
         }
 
-        .job-description {
-            color: #00ff00;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        ul {
-            list-style: none;
-            margin-left: 0;
-        }
-
-        li {
-            color: #00f2ff;
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: #ff00ff;
-            font-weight: bold;
-        }
-
         footer {
             text-align: center;
             padding: 30px;
@@ -687,7 +678,7 @@
             border-top: 1px solid rgba(0, 242, 255, 0.2);
         }
 
-            @media (max-width: 768px) {
+        @media (max-width: 768px) {
             .profile-image {
                 width: 150px;
                 height: 150px;
@@ -880,25 +871,25 @@
         <div class="section">
             <h2>[ Experience Log ]</h2>
             <div class="experience-accordion">
-                <div class="experience-item" data-state="collapsed">
-                    <div class="experience-header" onclick="toggleExperience(this)">
+                <div class="experience-item" id="main-experience">
+                    <div class="experience-header" onclick="toggleMainExperience()">
                         <div class="experience-header-content">
                             <div class="job-title">Click to view experience details</div>
                         </div>
                         <div class="expand-icon">▼</div>
                     </div>
-                    <div class="experience-content">
+                    <div class="experience-content" id="main-experience-content">
                         <div class="experience-content-inner">
                             <!-- Level 1: Company Headers -->
-                            <div class="company-item" data-state="collapsed">
-                                <div class="company-header" onclick="toggleCompany(event, this)">
+                            <div class="company-item" id="company1">
+                                <div class="company-header" onclick="toggleCompany('company1', event)">
                                     <div class="company-header-content">
                                         <div class="job-title">Systems Engineer</div>
                                         <div class="company-duration">Agribazaar · Dec 2022 - Present</div>
                                     </div>
                                     <div class="expand-icon-company">▶</div>
                                 </div>
-                                <div class="company-details">
+                                <div class="company-details" id="company1-details">
                                     <div class="company-details-inner">
                                         <div class="job-description">
                                             Leading infrastructure automation and cloud operations for India's largest agricultural trading platform.
@@ -915,15 +906,15 @@
                                 </div>
                             </div>
 
-                            <div class="company-item" data-state="collapsed">
-                                <div class="company-header" onclick="toggleCompany(event, this)">
+                            <div class="company-item" id="company2">
+                                <div class="company-header" onclick="toggleCompany('company2', event)">
                                     <div class="company-header-content">
                                         <div class="job-title">Systems Engineer</div>
                                         <div class="company-duration">EPAM Anywhere · May 2022 - Nov 2022</div>
                                     </div>
                                     <div class="expand-icon-company">▶</div>
                                 </div>
-                                <div class="company-details">
+                                <div class="company-details" id="company2-details">
                                     <div class="company-details-inner">
                                         <div class="job-description">
                                             Worked on global client projects focusing on cloud infrastructure automation.
@@ -938,15 +929,15 @@
                                 </div>
                             </div>
 
-                            <div class="company-item" data-state="collapsed">
-                                <div class="company-header" onclick="toggleCompany(event, this)">
+                            <div class="company-item" id="company3">
+                                <div class="company-header" onclick="toggleCompany('company3', event)">
                                     <div class="company-header-content">
                                         <div class="job-title">DevOps Engineer</div>
                                         <div class="company-duration">UNOBIT Solutions · Aug 2018 - Apr 2022</div>
                                     </div>
                                     <div class="expand-icon-company">▶</div>
                                 </div>
-                                <div class="company-details">
+                                <div class="company-details" id="company3-details">
                                     <div class="company-details-inner">
                                         <div class="job-description">
                                             <strong>Wells Fargo Project (Mar 2020 - Apr 2022)</strong><br>
@@ -1063,13 +1054,18 @@
 <div class="terminal-line"><span class="output">💼 LinkedIn: Connect with me!</span></div>
 <div class="terminal-line"><span class="success">Feel free to reach out for collaboration or opportunities!</span></div>
             `,
-            'download-cv': 'DOWNLOAD_CV',
+            'download-cv': `
+<div class="terminal-line"><span class="success">✓ Initiating CV download...</span></div>
+<div class="terminal-line"><span class="output">📄 Preparing Ali_Qumar_Abbas_Resume.pdf</span></div>
+<div class="terminal-line"><span class="output">⏳ Download started...</span></div>
+<div class="terminal-line"><span class="success">✓ Resume ready! Check your downloads folder.</span></div>
+            `,
             'skills': `
 <div class="terminal-line"><span class="success">✓ Technical Skills Loaded:</span></div>
 <div class="terminal-line"><span class="command">☁️ Cloud:</span> <span class="output">AWS, On-Prem Servers, GCC Compiled CSP</span></div>
 <div class="terminal-line"><span class="command">🐳 Containers:</span> <span class="output">Docker, Kubernetes, Helm</span></div>
-<div class="terminal-line"><span class="command">🔄 CI/CD:</span> <span class="output">Jenkins, GitHub Actions, ArgoCD, GitLab CI</span></div>
-<div class="terminal-line"><span class="command">🏗️ IaC:</span> <span class="output">Terraform, Ansible, Packer</span></div>
+<div class="terminal-line"><span class="command">🔄 CI/CD:</span> <span class="output">Jenkins, GitHub Actions, ArgoCD</span></div>
+<div class="terminal-line"><span class="command">🏗️ IaC:</span> <span class="output">Terraform, Ansible</span></div>
 <div class="terminal-line"><span class="command">📊 Monitoring:</span> <span class="output">Prometheus, Grafana, ELK Stack, CloudWatch</span></div>
 <div class="terminal-line"><span class="command">🚀 Deployed:</span> <span class="output">Node.js, React.js, PHP, Laravel, Python, Java, Golang, Ruby on Rails</span></div>
 <div class="terminal-line"><span class="command">💻 Languages:</span> <span class="output">Python, Bash, YAML, Shell Scripting</span></div>
@@ -1077,7 +1073,7 @@
             'clear': 'CLEAR'
         };
 
-        terminalInput.addEventListener('keydown', function(e) {
+        terminalInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 const command = terminalInput.value.trim().toLowerCase();
                 
@@ -1095,6 +1091,7 @@
                         if (command === 'clear') {
                             terminalOutput.innerHTML = '';
                         } else if (command === 'download-cv') {
+                            terminalOutput.innerHTML += commands[command];
                             downloadCVFile();
                         } else {
                             terminalOutput.innerHTML += commands[command];
@@ -1120,14 +1117,72 @@
 
         // Auto-focus terminal input
         terminalInput.focus();
-        document.addEventListener('click', function() {
+        document.addEventListener('click', () => {
             terminalInput.focus();
         });
 
         // CV Download function
-        function downloadCV() {
-            terminalOutput.innerHTML += `
-<div class="terminal-line"><span class="success">✓ Initiating CV download...</span></div>
-<div class="terminal-line"><span class="output">📄 Preparing Ali_Qumar_Abbas_Resume.pdf</span></div>
-<div class="terminal-line"><span class="error">⚠️ CV file not configured. Please add your CV PDF to enable download.</span></div>
-<div class="terminal-line"><span class
+        function downloadCVFile() {
+            const cvUrl = 'Ali_Qumar_Abbas_Resume.pdf';
+            const link = document.createElement('a');
+            link.href = cvUrl;
+            link.download = 'Ali_Qumar_Abbas_Resume.pdf';
+            link.click();
+        }
+
+        // Toggle main experience section
+        function toggleMainExperience() {
+            const item = document.getElementById('main-experience');
+            const content = document.getElementById('main-experience-content');
+            
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                content.style.maxHeight = '0';
+                
+                // Collapse all companies
+                document.querySelectorAll('.company-item').forEach(company => {
+                    company.classList.remove('active');
+                    const details = company.querySelector('.company-details');
+                    if (details) {
+                        details.style.maxHeight = '0';
+                    }
+                });
+            } else {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        // Toggle individual company details
+        function toggleCompany(companyId, event) {
+            event.stopPropagation();
+            
+            const companyItem = document.getElementById(companyId);
+            const details = document.getElementById(companyId + '-details');
+            const mainContent = document.getElementById('main-experience-content');
+            
+            if (companyItem.classList.contains('active')) {
+                companyItem.classList.remove('active');
+                details.style.maxHeight = '0';
+            } else {
+                companyItem.classList.add('active');
+                details.style.maxHeight = details.scrollHeight + 'px';
+            }
+            
+            // Update main content height
+            setTimeout(() => {
+                mainContent.style.maxHeight = mainContent.scrollHeight + 'px';
+            }, 100);
+        }
+
+        // Welcome message
+        window.addEventListener('load', () => {
+            terminalOutput.innerHTML = `
+                <div class="terminal-line"><span class="success">Welcome to Ali's DevOps Terminal v1.0</span></div>
+                <div class="terminal-line"><span class="output">Type 'help' to see available commands</span></div>
+                <div class="terminal-line"><span class="output">---</span></div>
+            `;
+        });
+    </script>
+</body>
+</html>
