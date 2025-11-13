@@ -226,12 +226,14 @@
             overflow-y: auto;
             background: #0a0a0a;
             font-family: 'Courier New', monospace;
+            font-size: 0.9em;
         }
 
         .terminal-hint {
             color: #666;
             margin-bottom: 15px;
             font-size: 0.85em;
+            word-wrap: break-word;
         }
 
         .terminal-hint span {
@@ -502,9 +504,21 @@
 
         .contact-grid-modern {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .download-cv-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .download-cv-container .contact-card-modern {
+            max-width: 300px;
+            width: 100%;
         }
 
         .contact-card-modern {
@@ -707,6 +721,16 @@
             .terminal-body {
                 padding: 15px;
                 min-height: 250px;
+                font-size: 0.8em;
+            }
+
+            .terminal-hint {
+                font-size: 0.75em;
+                line-height: 1.4;
+            }
+
+            .terminal-input {
+                font-size: 0.9em;
             }
 
             .job-title {
@@ -719,6 +743,10 @@
 
             .contact-grid-modern {
                 grid-template-columns: 1fr;
+            }
+
+            .download-cv-container .contact-card-modern {
+                max-width: 100%;
             }
 
             .contact-card-modern {
@@ -782,11 +810,6 @@
                     <div class="skill-title">☁️ Cloud & Infrastructure</div>
                     <div class="skill-tags">
                         <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">EC2</span>
-                        <span class="skill-tag">S3</span>
-                        <span class="skill-tag">VPC</span>
-                        <span class="skill-tag">EKS</span>
-                        <span class="skill-tag">Lambda</span>
                         <span class="skill-tag">On-Prem Servers</span>
                         <span class="skill-tag">GCC Compiled CSP</span>
                     </div>
@@ -798,7 +821,6 @@
                         <span class="skill-tag">Jenkins</span>
                         <span class="skill-tag">GitHub Actions</span>
                         <span class="skill-tag">ArgoCD</span>
-                        <span class="skill-tag">GitLab CI</span>
                     </div>
                 </div>
 
@@ -816,7 +838,6 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Terraform</span>
                         <span class="skill-tag">Ansible</span>
-                        <span class="skill-tag">Packer</span>
                     </div>
                 </div>
 
@@ -845,12 +866,11 @@
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-title">💻 Languages & Tools</div>
+                    <div class="skill-title">💻 Languages</div>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">Bash</span>
                         <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">Git</span>
                         <span class="skill-tag">YAML</span>
                     </div>
                 </div>
@@ -999,20 +1019,9 @@
                     <div class="contact-value-modern">Let's Network</div>
                     <div class="card-shine"></div>
                 </div>
+            </div>
 
-                <div class="contact-card-modern" onclick="window.open('https://maps.google.com/?q=Mumbai,India')">
-                    <div class="card-glow"></div>
-                    <div class="contact-icon-modern">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                    </div>
-                    <div class="contact-label-modern">Location</div>
-                    <div class="contact-value-modern">Mumbai, India</div>
-                    <div class="card-shine"></div>
-                </div>
-
+            <div class="download-cv-container">
                 <div class="contact-card-modern download-cv-card" onclick="downloadCVFile()">
                     <div class="card-glow"></div>
                     <div class="contact-icon-modern">
@@ -1054,6 +1063,7 @@
 <div class="terminal-line"><span class="output">💼 LinkedIn: Connect with me!</span></div>
 <div class="terminal-line"><span class="success">Feel free to reach out for collaboration or opportunities!</span></div>
             `,
+            'download-cv': 'DOWNLOAD_CV',
             'skills': `
 <div class="terminal-line"><span class="success">✓ Technical Skills Loaded:</span></div>
 <div class="terminal-line"><span class="command">☁️ Cloud:</span> <span class="output">AWS, On-Prem Servers, GCC Compiled CSP</span></div>
@@ -1066,6 +1076,53 @@
             `,
             'clear': 'CLEAR'
         };
+
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = terminalInput.value.trim().toLowerCase();
+                
+                if (command) {
+                    // Display command
+                    terminalOutput.innerHTML += `
+                        <div class="terminal-line">
+                            <span class="prompt">ali@portfolio:~$</span>
+                            <span class="command"> ${command}</span>
+                        </div>
+                    `;
+
+                    // Execute command
+                    if (commands[command]) {
+                        if (command === 'clear') {
+                            terminalOutput.innerHTML = '';
+                        } else if (command === 'download-cv') {
+                            downloadCVFile();
+                        } else {
+                            terminalOutput.innerHTML += commands[command];
+                        }
+                    } else {
+                        terminalOutput.innerHTML += `
+                            <div class="terminal-line">
+                                <span class="error">Command not found: ${command}</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">Type 'help' for available commands</span>
+                            </div>
+                        `;
+                    }
+
+                    // Scroll to bottom
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                }
+
+                terminalInput.value = '';
+            }
+        });
+
+        // Auto-focus terminal input
+        terminalInput.focus();
+        document.addEventListener('click', function() {
+            terminalInput.focus();
+        });
 
         // CV Download function
         function downloadCV() {
