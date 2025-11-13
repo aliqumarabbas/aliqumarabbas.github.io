@@ -128,20 +128,21 @@
 
         header {
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 60px 20px 40px;
             animation: fadeInUp 1s ease;
         }
 
         .profile-image {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
             border: 4px solid transparent;
             background: linear-gradient(#000, #000) padding-box,
                         linear-gradient(135deg, #00f2ff, #ff00ff, #7000ff) border-box;
             padding: 4px;
             animation: glow 3s infinite, float 6s infinite;
+            overflow: hidden;
         }
 
         .profile-image img {
@@ -149,29 +150,30 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
+            display: block;
         }
 
         h1 {
-            font-size: 4em;
+            font-size: 3em;
             font-weight: 900;
             color: #00f2ff;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             animation: neonPulse 3s infinite;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
         }
 
         .subtitle {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: #ff00ff;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-shadow: 0 0 10px #ff00ff;
         }
 
         .tagline {
-            font-size: 1.2em;
+            font-size: 1em;
             color: #7000ff;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         /* Terminal Section */
@@ -180,7 +182,7 @@
             border: 2px solid #00f2ff;
             border-radius: 15px;
             padding: 0;
-            margin: 60px auto;
+            margin: 40px auto;
             max-width: 900px;
             box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
             animation: fadeInUp 1.2s ease;
@@ -189,7 +191,7 @@
 
         .terminal-header {
             background: linear-gradient(135deg, #00f2ff, #ff00ff);
-            padding: 15px 20px;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -201,8 +203,8 @@
         }
 
         .terminal-button {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
         }
 
@@ -214,20 +216,22 @@
             color: #000;
             font-weight: bold;
             margin-left: 10px;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         .terminal-body {
-            padding: 25px;
-            min-height: 350px;
+            padding: 20px;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
             background: #0a0a0a;
             font-family: 'Courier New', monospace;
         }
 
         .terminal-hint {
             color: #666;
-            margin-bottom: 20px;
-            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-size: 0.85em;
         }
 
         .terminal-hint span {
@@ -236,12 +240,12 @@
         }
 
         .terminal-output {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.8;
         }
 
         .terminal-line {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             animation: slideIn 0.5s ease;
         }
 
@@ -302,8 +306,8 @@
             background: rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(0, 242, 255, 0.3);
             border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 40px;
+            padding: 35px;
+            margin-bottom: 30px;
             backdrop-filter: blur(10px);
             animation: fadeInUp 1s ease;
             transition: all 0.3s;
@@ -316,19 +320,19 @@
         }
 
         h2 {
-            font-size: 2.5em;
+            font-size: 2em;
             color: #ff00ff;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-shadow: 0 0 10px #ff00ff;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 25px;
         }
 
         .skill-card {
@@ -351,6 +355,7 @@
             font-size: 1.1em;
             margin-bottom: 15px;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         .skill-tags {
@@ -363,12 +368,9 @@
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(255, 0, 255, 0.5);
             color: #ff00ff;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 15px;
             font-size: 0.85em;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
             transition: all 0.3s;
         }
 
@@ -378,35 +380,262 @@
             transform: translateY(-2px);
         }
 
-        .skill-tag img, .skill-tag svg {
-            width: 14px;
-            height: 14px;
-            filter: brightness(1.5);
+        /* Experience Accordion */
+        .experience-accordion {
+            margin-top: 20px;
         }
 
         .experience-item {
-            margin-bottom: 40px;
-            padding: 30px;
+            margin-bottom: 15px;
             background: rgba(112, 0, 255, 0.1);
-            border-left: 4px solid #7000ff;
+            border: 2px solid rgba(112, 0, 255, 0.3);
             border-radius: 10px;
+            overflow: hidden;
             transition: all 0.3s;
         }
 
         .experience-item:hover {
+            border-color: #7000ff;
+        }
+
+        .experience-header {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .experience-header:hover {
             background: rgba(112, 0, 255, 0.2);
-            transform: translateX(10px);
+        }
+
+        .experience-header-content {
+            flex: 1;
         }
 
         .job-title {
             color: #00f2ff;
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
 
         .company-duration {
             color: #7000ff;
+            font-size: 0.95em;
+        }
+
+        .expand-icon {
+            color: #ff00ff;
+            font-size: 1.5em;
+            transition: transform 0.3s;
+            font-weight: bold;
+        }
+
+        .experience-item[data-state="expanded"] .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .experience-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .experience-content-inner {
+            padding: 0 25px 25px 25px;
+        }
+
+        /* Company Level Accordion */
+        .company-item {
             margin-bottom: 15px;
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .company-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .company-header:hover {
+            background: rgba(0, 242, 255, 0.1);
+        }
+
+        .company-header-content {
+            flex: 1;
+        }
+
+        .expand-icon-company {
+            color: #ff00ff;
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            font-weight: bold;
+        }
+
+        .company-item[data-state="expanded"] .expand-icon-company {
+            transform: rotate(90deg);
+        }
+
+        .company-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .company-details-inner {
+            padding: 0 20px 20px 20px;
+        }
+
+        /* Contact Section - Modern Trendy Design */
+        .reach-out-section {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.05), rgba(255, 0, 255, 0.05));
+        }
+
+        .contact-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-card-modern {
+            position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 20px;
+            padding: 35px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card-modern:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #00f2ff;
+            box-shadow: 0 20px 60px rgba(0, 242, 255, 0.4);
+        }
+
+        .card-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .contact-card-modern:hover .card-glow {
+            opacity: 1;
+            animation: rotateGlow 3s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .card-shine {
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: all 0.6s;
+        }
+
+        .contact-card-modern:hover .card-shine {
+            left: 100%;
+            top: 100%;
+        }
+
+        .contact-icon-modern {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border-radius: 50%;
+            border: 2px solid rgba(0, 242, 255, 0.5);
+            transition: all 0.4s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-icon-modern svg {
+            width: 30px;
+            height: 30px;
+            color: #00f2ff;
+            transition: all 0.4s;
+        }
+
+        .contact-card-modern:hover .contact-icon-modern {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.4), rgba(255, 0, 255, 0.4));
+            transform: scale(1.1) rotateY(360deg);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.6);
+        }
+
+        .contact-card-modern:hover .contact-icon-modern svg {
+            color: #ffffff;
+        }
+
+        .contact-label-modern {
+            color: #7000ff;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-value-modern {
+            color: #00f2ff;
+            font-size: 0.95em;
+            word-break: break-word;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        .contact-card-modern:hover .contact-value-modern {
+            color: #ff00ff;
+            transform: scale(1.05);
+        }
+
+        .download-cv-card {
+            background: linear-gradient(135deg, rgba(112, 0, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border: 2px solid rgba(255, 0, 255, 0.5);
+        }
+
+        .download-cv-card:hover {
+            border-color: #ff00ff;
+            box-shadow: 0 20px 60px rgba(255, 0, 255, 0.5);
+        }
+
+        .download-cv-card .contact-icon-modern {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.3), rgba(112, 0, 255, 0.3));
+            border-color: rgba(255, 0, 255, 0.6);
+        }
+
+        .download-cv-card .contact-icon-modern svg {
+            color: #ff00ff;
         }
 
         .job-description {
@@ -438,20 +667,29 @@
 
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: #666;
-            margin-top: 60px;
+            margin-top: 40px;
             border-top: 1px solid rgba(0, 242, 255, 0.2);
         }
 
-        @media (max-width: 768px) {
+            @media (max-width: 768px) {
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
             h1 {
-                font-size: 2.5em;
+                font-size: 2em;
                 letter-spacing: 2px;
             }
 
             .subtitle {
-                font-size: 1.2em;
+                font-size: 1.1em;
+            }
+
+            .tagline {
+                font-size: 0.9em;
             }
 
             .skills-grid {
@@ -459,7 +697,32 @@
             }
 
             .section {
-                padding: 25px;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .terminal-body {
+                padding: 15px;
+                min-height: 250px;
+            }
+
+            .job-title {
+                font-size: 1.1em;
+            }
+
+            .shape {
+                display: none;
+            }
+
+            .contact-grid-modern {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card-modern {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -476,11 +739,11 @@
     <div class="container">
         <header>
             <div class="profile-image">
-                <img src="aliabbas.png" alt="Ali Qumar Abbas">
+                <img src="aliabbas.png" alt="Ali Qumar Abbas" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%231a0a2e%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2260%22 fill=%22%2300f2ff%22%3EAA%3C/text%3E%3C/svg%3E'">
             </div>
             <h1>Ali Qumar Abbas</h1>
-            <div class="subtitle">[ Systems Engineer | DevOps Architect ]</div>
-            <div class="tagline">$ sudo make-cloud-magic --expertise=aws --mode=production</div>
+            <div class="subtitle">[ Senior Systems Engineer | DevOps Architect ]</div>
+            <div class="tagline">$ sudo make-cloud-magic --expertise=aws --experience=7yrs</div>
         </header>
 
         <!-- Interactive Terminal -->
@@ -508,7 +771,7 @@
         <div class="section">
             <h2>[ About Me ]</h2>
             <div class="job-description">
-                A dedicated Systems Engineer with over 4 years of hands-on experience in AWS cloud infrastructure and DevOps practices. Specialized in designing, implementing, and managing scalable cloud solutions using comprehensive AWS services, CI/CD pipeline automation, Kubernetes orchestration, and infrastructure as code. Proven ability to collaborate with cross-functional teams and deliver high-quality solutions while maintaining strict adherence to project timelines.
+                A dedicated Senior Systems Engineer with over 7 years of hands-on experience in AWS cloud infrastructure, on-premises servers, and DevOps practices. Specialized in designing, implementing, and managing scalable cloud solutions using comprehensive AWS services, GCC compiled CSP environments, CI/CD pipeline automation, Kubernetes orchestration, and infrastructure as code. Proven ability to collaborate with cross-functional teams and deliver high-quality solutions while maintaining strict adherence to project timelines.
             </div>
         </div>
 
@@ -518,108 +781,77 @@
                 <div class="skill-card">
                     <div class="skill-title">☁️ Cloud & Infrastructure</div>
                     <div class="skill-tags">
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg">
-                            AWS
-                        </span>
+                        <span class="skill-tag">AWS</span>
                         <span class="skill-tag">EC2</span>
                         <span class="skill-tag">S3</span>
                         <span class="skill-tag">VPC</span>
                         <span class="skill-tag">EKS</span>
                         <span class="skill-tag">Lambda</span>
+                        <span class="skill-tag">On-Prem Servers</span>
+                        <span class="skill-tag">GCC Compiled CSP</span>
                     </div>
                 </div>
 
                 <div class="skill-card">
                     <div class="skill-title">🔄 CI/CD & Automation</div>
                     <div class="skill-tags">
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg">
-                            Jenkins
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
-                            GitHub Actions
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg">
-                            ArgoCD
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg">
-                            GitLab CI
-                        </span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">ArgoCD</span>
+                        <span class="skill-tag">GitLab CI</span>
                     </div>
                 </div>
 
                 <div class="skill-card">
                     <div class="skill-title">🐳 Containers & Orchestration</div>
                     <div class="skill-tags">
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg">
-                            Docker
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg">
-                            Kubernetes
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/helm/helm-original.svg">
-                            Helm
-                        </span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Helm</span>
                     </div>
                 </div>
 
                 <div class="skill-card">
                     <div class="skill-title">🏗️ Infrastructure as Code</div>
                     <div class="skill-tags">
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg">
-                            Terraform
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg">
-                            Ansible
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/packer/packer-original.svg">
-                            Packer
-                        </span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">Packer</span>
                     </div>
                 </div>
 
                 <div class="skill-card">
                     <div class="skill-title">📊 Monitoring & Logging</div>
                     <div class="skill-tags">
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg">
-                            Prometheus
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg">
-                            Grafana
-                        </span>
+                        <span class="skill-tag">Prometheus</span>
+                        <span class="skill-tag">Grafana</span>
                         <span class="skill-tag">ELK Stack</span>
                         <span class="skill-tag">CloudWatch</span>
                     </div>
                 </div>
 
                 <div class="skill-card">
+                    <div class="skill-title">🚀 Languages Deployed</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Golang</span>
+                        <span class="skill-tag">Ruby on Rails</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
                     <div class="skill-title">💻 Languages & Tools</div>
                     <div class="skill-tags">
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
-                            Python
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg">
-                            Bash
-                        </span>
-                        <span class="skill-tag">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg">
-                            Linux
-                        </span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Linux</span>
                         <span class="skill-tag">Git</span>
+                        <span class="skill-tag">YAML</span>
                     </div>
                 </div>
             </div>
@@ -627,61 +859,173 @@
 
         <div class="section">
             <h2>[ Experience Log ]</h2>
+            <div class="experience-accordion">
+                <div class="experience-item" data-state="collapsed">
+                    <div class="experience-header" onclick="toggleExperience(this)">
+                        <div class="experience-header-content">
+                            <div class="job-title">Click to view experience details</div>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-content-inner">
+                            <!-- Level 1: Company Headers -->
+                            <div class="company-item" data-state="collapsed">
+                                <div class="company-header" onclick="toggleCompany(event, this)">
+                                    <div class="company-header-content">
+                                        <div class="job-title">Systems Engineer</div>
+                                        <div class="company-duration">Agribazaar · Dec 2022 - Present</div>
+                                    </div>
+                                    <div class="expand-icon-company">▶</div>
+                                </div>
+                                <div class="company-details">
+                                    <div class="company-details-inner">
+                                        <div class="job-description">
+                                            Leading infrastructure automation and cloud operations for India's largest agricultural trading platform.
+                                        </div>
+                                        <ul>
+                                            <li>Developing and implementing Kubernetes manifests and Helm charts for microservices deployment</li>
+                                            <li>Contributing to Jenkins shared library for standardized CI/CD pipelines</li>
+                                            <li>Managing infrastructure deployment using Terraform for consistent provisioning</li>
+                                            <li>Administering VPC architecture and advanced security configurations</li>
+                                            <li>Optimizing content delivery through AWS CloudFront CDN</li>
+                                            <li>Implementing monitoring solutions using CloudWatch, Prometheus, and Grafana</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="experience-item">
-                <div class="job-title">Systems Engineer</div>
-                <div class="company-duration">Agribazaar · Dec 2022 - Present</div>
-                <div class="job-description">
-                    Leading infrastructure automation and cloud operations for India's largest agricultural trading platform.
+                            <div class="company-item" data-state="collapsed">
+                                <div class="company-header" onclick="toggleCompany(event, this)">
+                                    <div class="company-header-content">
+                                        <div class="job-title">Systems Engineer</div>
+                                        <div class="company-duration">EPAM Anywhere · May 2022 - Nov 2022</div>
+                                    </div>
+                                    <div class="expand-icon-company">▶</div>
+                                </div>
+                                <div class="company-details">
+                                    <div class="company-details-inner">
+                                        <div class="job-description">
+                                            Worked on global client projects focusing on cloud infrastructure automation.
+                                        </div>
+                                        <ul>
+                                            <li>Developed Kubernetes manifests and Helm charts for enterprise microservices</li>
+                                            <li>Contributed to Jenkins shared library for standardized build processes</li>
+                                            <li>Managed deployment automation using Terraform for multi-cloud environments</li>
+                                            <li>Maintained artifact versioning using Nexus repository manager</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="company-item" data-state="collapsed">
+                                <div class="company-header" onclick="toggleCompany(event, this)">
+                                    <div class="company-header-content">
+                                        <div class="job-title">DevOps Engineer</div>
+                                        <div class="company-duration">UNOBIT Solutions · Aug 2018 - Apr 2022</div>
+                                    </div>
+                                    <div class="expand-icon-company">▶</div>
+                                </div>
+                                <div class="company-details">
+                                    <div class="company-details-inner">
+                                        <div class="job-description">
+                                            <strong>Wells Fargo Project (Mar 2020 - Apr 2022)</strong><br>
+                                            Implemented robust DevOps practices for a major financial institution.
+                                        </div>
+                                        <ul>
+                                            <li>Built deployable WAR/EAR files using Maven and Jenkins</li>
+                                            <li>Implemented log management pipeline using ELK Stack</li>
+                                            <li>Integrated SonarQube quality gates in CI/CD pipelines</li>
+                                            <li>Deployed applications on Kubernetes with horizontal pod autoscaling</li>
+                                            <li>Managed deployments across DEV, QA, and UAT environments</li>
+                                        </ul>
+                                        <div class="job-description" style="margin-top: 20px;">
+                                            <strong>AML Cards Analytics (Aug 2018 - Feb 2020)</strong><br>
+                                            Anti-Money Laundering transaction monitoring system.
+                                        </div>
+                                        <ul>
+                                            <li>Deployed and maintained AWS cloud infrastructure with Kubernetes</li>
+                                            <li>Managed S3 buckets for backups and log storage</li>
+                                            <li>Configured databases on Amazon RDS with automated backup strategies</li>
+                                            <li>Ensured high availability and security of production systems</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul>
-                    <li>Developing and implementing Kubernetes manifests and Helm charts for microservices deployment</li>
-                    <li>Contributing to Jenkins shared library for standardized CI/CD pipelines</li>
-                    <li>Managing infrastructure deployment using Terraform for consistent provisioning</li>
-                    <li>Administering VPC architecture and advanced security configurations</li>
-                    <li>Optimizing content delivery through AWS CloudFront CDN</li>
-                    <li>Implementing monitoring solutions using CloudWatch, Prometheus, and Grafana</li>
-                </ul>
             </div>
+        </div>
 
-            <div class="experience-item">
-                <div class="job-title">Systems Engineer</div>
-                <div class="company-duration">EPAM Anywhere · May 2022 - Nov 2022</div>
-                <div class="job-description">
-                    Worked on global client projects focusing on cloud infrastructure automation.
+        <div class="section reach-out-section">
+            <h2>[ Let's Connect ]</h2>
+            <div class="contact-grid-modern">
+                <div class="contact-card-modern" onclick="window.location.href='mailto:aliqumarabbas@gmail.com'">
+                    <div class="card-glow"></div>
+                    <div class="contact-icon-modern">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-label-modern">Email Me</div>
+                    <div class="contact-value-modern">aliqumarabbas@gmail.com</div>
+                    <div class="card-shine"></div>
                 </div>
-                <ul>
-                    <li>Developed Kubernetes manifests and Helm charts for enterprise microservices</li>
-                    <li>Contributed to Jenkins shared library for standardized build processes</li>
-                    <li>Managed deployment automation using Terraform for multi-cloud environments</li>
-                    <li>Maintained artifact versioning using Nexus repository manager</li>
-                </ul>
-            </div>
 
-            <div class="experience-item">
-                <div class="job-title">DevOps Engineer</div>
-                <div class="company-duration">UNOBIT Solutions · Aug 2018 - Apr 2022</div>
-                <div class="job-description">
-                    <strong>Wells Fargo Project (Mar 2020 - Apr 2022)</strong><br>
-                    Implemented robust DevOps practices for a major financial institution.
+                <div class="contact-card-modern" onclick="window.open('tel:+918871637296')">
+                    <div class="card-glow"></div>
+                    <div class="contact-icon-modern">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="contact-label-modern">Call Me</div>
+                    <div class="contact-value-modern">+91-8871637296</div>
+                    <div class="card-shine"></div>
                 </div>
-                <ul>
-                    <li>Built deployable WAR/EAR files using Maven and Jenkins</li>
-                    <li>Implemented log management pipeline using ELK Stack</li>
-                    <li>Integrated SonarQube quality gates in CI/CD pipelines</li>
-                    <li>Deployed applications on Kubernetes with horizontal pod autoscaling</li>
-                    <li>Managed deployments across DEV, QA, and UAT environments</li>
-                </ul>
-                <div class="job-description" style="margin-top: 20px;">
-                    <strong>AML Cards Analytics (Aug 2018 - Feb 2020)</strong><br>
-                    Anti-Money Laundering transaction monitoring system.
+
+                <div class="contact-card-modern" onclick="alert('Add your LinkedIn URL here')">
+                    <div class="card-glow"></div>
+                    <div class="contact-icon-modern">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="contact-label-modern">LinkedIn</div>
+                    <div class="contact-value-modern">Let's Network</div>
+                    <div class="card-shine"></div>
                 </div>
-                <ul>
-                    <li>Deployed and maintained AWS cloud infrastructure with Kubernetes</li>
-                    <li>Managed S3 buckets for backups and log storage</li>
-                    <li>Configured databases on Amazon RDS with automated backup strategies</li>
-                    <li>Ensured high availability and security of production systems</li>
-                </ul>
+
+                <div class="contact-card-modern" onclick="window.open('https://maps.google.com/?q=Mumbai,India')">
+                    <div class="card-glow"></div>
+                    <div class="contact-icon-modern">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="contact-label-modern">Location</div>
+                    <div class="contact-value-modern">Mumbai, India</div>
+                    <div class="card-shine"></div>
+                </div>
+
+                <div class="contact-card-modern download-cv-card" onclick="downloadCVFile()">
+                    <div class="card-glow"></div>
+                    <div class="contact-icon-modern">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </div>
+                    <div class="contact-label-modern">Download CV</div>
+                    <div class="contact-value-modern">Get My Resume</div>
+                    <div class="card-shine"></div>
+                </div>
             </div>
         </div>
 
@@ -710,77 +1054,23 @@
 <div class="terminal-line"><span class="output">💼 LinkedIn: Connect with me!</span></div>
 <div class="terminal-line"><span class="success">Feel free to reach out for collaboration or opportunities!</span></div>
             `,
-            'download-cv': `
-<div class="terminal-line"><span class="success">✓ Initiating CV download...</span></div>
-<div class="terminal-line"><span class="output">📄 Preparing Ali_Qumar_Abbas_Resume.pdf</span></div>
-<div class="terminal-line"><span class="output">⏳ Download started...</span></div>
-<div class="terminal-line"><span class="success">✓ Resume ready! Check your downloads folder.</span></div>
-            `,
             'skills': `
 <div class="terminal-line"><span class="success">✓ Technical Skills Loaded:</span></div>
-<div class="terminal-line"><span class="command">☁️ Cloud:</span> <span class="output">AWS (EC2, S3, VPC, EKS, Lambda, RDS)</span></div>
+<div class="terminal-line"><span class="command">☁️ Cloud:</span> <span class="output">AWS, On-Prem Servers, GCC Compiled CSP</span></div>
 <div class="terminal-line"><span class="command">🐳 Containers:</span> <span class="output">Docker, Kubernetes, Helm</span></div>
 <div class="terminal-line"><span class="command">🔄 CI/CD:</span> <span class="output">Jenkins, GitHub Actions, ArgoCD, GitLab CI</span></div>
 <div class="terminal-line"><span class="command">🏗️ IaC:</span> <span class="output">Terraform, Ansible, Packer</span></div>
 <div class="terminal-line"><span class="command">📊 Monitoring:</span> <span class="output">Prometheus, Grafana, ELK Stack, CloudWatch</span></div>
+<div class="terminal-line"><span class="command">🚀 Deployed:</span> <span class="output">Node.js, React.js, PHP, Laravel, Python, Java, Golang, Ruby on Rails</span></div>
 <div class="terminal-line"><span class="command">💻 Languages:</span> <span class="output">Python, Bash, YAML, Shell Scripting</span></div>
             `,
             'clear': 'CLEAR'
         };
 
-        terminalInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value.trim().toLowerCase();
-                
-                if (command) {
-                    // Display command
-                    terminalOutput.innerHTML += `
-                        <div class="terminal-line">
-                            <span class="prompt">ali@portfolio:~$</span>
-                            <span class="command"> ${command}</span>
-                        </div>
-                    `;
-
-                    // Execute command
-                    if (commands[command]) {
-                        if (command === 'clear') {
-                            terminalOutput.innerHTML = '';
-                        } else {
-                            terminalOutput.innerHTML += commands[command];
-                        }
-                    } else {
-                        terminalOutput.innerHTML += `
-                            <div class="terminal-line">
-                                <span class="error">Command not found: ${command}</span>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="output">Type 'help' for available commands</span>
-                            </div>
-                        `;
-                    }
-
-                    // Scroll to bottom
-                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                }
-
-                terminalInput.value = '';
-            }
-        });
-
-        // Auto-focus terminal input
-        terminalInput.focus();
-        document.addEventListener('click', () => {
-            terminalInput.focus();
-        });
-
-        // Welcome message
-        window.addEventListener('load', () => {
-            terminalOutput.innerHTML = `
-                <div class="terminal-line"><span class="success">Welcome to Ali's DevOps Terminal v1.0</span></div>
-                <div class="terminal-line"><span class="output">Type 'help' to see available commands</span></div>
-                <div class="terminal-line"><span class="output">---</span></div>
-            `;
-        });
-    </script>
-</body>
-</html>
+        // CV Download function
+        function downloadCV() {
+            terminalOutput.innerHTML += `
+<div class="terminal-line"><span class="success">✓ Initiating CV download...</span></div>
+<div class="terminal-line"><span class="output">📄 Preparing Ali_Qumar_Abbas_Resume.pdf</span></div>
+<div class="terminal-line"><span class="error">⚠️ CV file not configured. Please add your CV PDF to enable download.</span></div>
+<div class="terminal-line"><span class
